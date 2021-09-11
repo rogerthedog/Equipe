@@ -15,7 +15,7 @@ EPageAccountPassword >> existingPasswordValidation [
 
 	| people |
 
-	people := EDbPerson selectByEmailAddress: person emailAddress password: self password.
+	people := EDbTPerson selectByEmailAddress: person emailAddress password: self password.
 			
 	people isEmpty ifTrue: [  
 		self statusMessage: 'This is not the correct password for this user account' forKey: #password 

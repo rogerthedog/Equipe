@@ -106,6 +106,9 @@ EPage >> renderPageHeadingOn: html [
 		html div class: 'topnav-right'; with: [
 			
 			self session isLoggedIn ifTrue: [  
+				self session loggedInPerson isCoach ifTrue: [  
+					self renderNavigationLinkOn: html toClass: EPageAthletes text: 'Athletes'					
+				].
 				self renderNavigationLinkOn: html toClass: EPageAccount text: 'Account'.
 				self renderNavigationLinkOn: html block: [self logOut] text: 'Log Out'.
 			] 
@@ -198,13 +201,14 @@ input[type=text], input[type=password], select {
 }
 
 input[type=submit] {
-  background-color: #4CAF50;
+  background-color: #04AA6D;
   color: white;
   padding: 14px 20px;
   margin: 8px 8px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 17px;
 }
 
 input[type=submit]:hover {
@@ -260,6 +264,47 @@ input[type=submit]:hover {
 .topnav-right {
   float: right;
 }
+
+#pagingTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#pagingTable td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+#pagingTable tr:hover {background-color: #ddd;}
+
+#pagingTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+.pagingTable {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #4CAA6D;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
 
 '	
 ]

@@ -1,5 +1,5 @@
 Class {
-	#name : #EDbOnetime,
+	#name : #EDbTOnetime,
 	#superclass : #BTable,
 	#instVars : [
 		'keyId',
@@ -10,12 +10,12 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-EDbOnetime class >> generateOnetimeCode [
+EDbTOnetime class >> generateOnetimeCode [
 	^ DateAndTime now hash
 ]
 
 { #category : #'as yet unclassified' }
-EDbOnetime class >> metaDataSetColumnAliases [
+EDbTOnetime class >> metaDataSetColumnAliases [
 	
 	self addMetaDataColumnAlias: 'key_id' forMember: 'keyId'.	
 	self addMetaDataColumnAlias: 'onetime_code' forMember: 'onetimeCode'.	
@@ -23,7 +23,7 @@ EDbOnetime class >> metaDataSetColumnAliases [
 ]
 
 { #category : #'as yet unclassified' }
-EDbOnetime class >> removeExpired [
+EDbTOnetime class >> removeExpired [
 
 	| onetimeExpirySeconds expiryDateAndTime |
 	
@@ -35,7 +35,7 @@ EDbOnetime class >> removeExpired [
 ]
 
 { #category : #'as yet unclassified' }
-EDbOnetime class >> selectByAction: action keyId: keyId onetimeCode: onetimeCode [
+EDbTOnetime class >> selectByAction: action keyId: keyId onetimeCode: onetimeCode [
 
 	^ self selectWhere: 'action = ? AND keyId = ? AND onetimeCode = ?' 
 		whereBindingBlock:
@@ -48,41 +48,41 @@ EDbOnetime class >> selectByAction: action keyId: keyId onetimeCode: onetimeCode
 ]
 
 { #category : #'as yet unclassified' }
-EDbOnetime class >> table [ 
+EDbTOnetime class >> table [ 
 	^ 'onetime'
 ]
 
 { #category : #accessing }
-EDbOnetime >> action [
+EDbTOnetime >> action [
 	^ action
 ]
 
 { #category : #accessing }
-EDbOnetime >> action: anObject [
+EDbTOnetime >> action: anObject [
 	action := anObject
 ]
 
 { #category : #accessing }
-EDbOnetime >> initialize [
+EDbTOnetime >> initialize [
 	onetimeCode := self class generateOnetimeCode
 ]
 
 { #category : #accessing }
-EDbOnetime >> keyId [
+EDbTOnetime >> keyId [
 	^ keyId
 ]
 
 { #category : #accessing }
-EDbOnetime >> keyId: anObject [
+EDbTOnetime >> keyId: anObject [
 	keyId := anObject
 ]
 
 { #category : #accessing }
-EDbOnetime >> onetimeCode [
+EDbTOnetime >> onetimeCode [
 	^ onetimeCode
 ]
 
 { #category : #accessing }
-EDbOnetime >> onetimeCode: anObject [
+EDbTOnetime >> onetimeCode: anObject [
 	onetimeCode := anObject
 ]

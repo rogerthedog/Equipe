@@ -25,7 +25,7 @@ EPageLogIn >> logIn [
 	self pageValidation.
 	
 	self hasNoErrors ifTrue: [ 
-		people := EDbPerson selectByEmailAddress: emailAddress password: password.
+		people := EDbTPerson selectByEmailAddress: emailAddress password: password.
 			
 		people size = 1 ifTrue: [  
 			self session logInWith: (people at: 1).

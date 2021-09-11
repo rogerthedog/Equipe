@@ -16,7 +16,7 @@ EPageRegister >> duplicateEmailValidation [
 
 	| people |
 
-	people := EDbPerson selectByEmailAddress: emailAddress.
+	people := EDbTPerson selectByEmailAddress: emailAddress.
 			
 	people isEmpty ifFalse: [  
 		self statusMessage: 'There is already a registered user for the specified email address' forKey: #emailAddress 
@@ -118,7 +118,7 @@ EPageRegister >> registerAsCoach: isCoach [
 	
 	self hasNoErrors ifTrue: [ 
 
-		person := EDbPerson new.
+		person := EDbTPerson new.
 		person firstName: firstName. 
 		person lastName: lastName. 
 		person emailAddress: emailAddress. 

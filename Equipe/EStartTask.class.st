@@ -17,19 +17,19 @@ EStartTask class >> createUrlPasswordResetForEmail: anEmailAddress fromSession: 
 
 	| people onetime url newAction newKeyId |
 
-	people := EDbPerson selectByEmailAddress: anEmailAddress.
+	people := EDbTPerson selectByEmailAddress: anEmailAddress.
 	people size == 1 ifTrue: [  
 		
 		newAction := 'PasswordReset'.
 		newKeyId := (people at: 1) rowid.
 
-		onetime := EDbOnetime new.
+		onetime := EDbTOnetime new.
 		onetime action: newAction.
 		onetime keyId: newKeyId. 	
 		onetime insert.	
 
 		[  
-			EDbOnetime removeExpired
+			EDbTOnetime removeExpired
 		] fork.
 
 		url := WAUrl new initializeFromString: EConfiguration baseUrl. 
@@ -79,7 +79,7 @@ EStartTask >> initialRequest: aRequest [
 		
 		action = 'PasswordReset' ifTrue: [  
 
-			onetime := EDbOnetime new.
+			onetime := EDbTOnetime new.
 			onetime action: action.	
 			onetime keyId: (fields at: 'keyId').	
 			onetime onetimeCode: (fields at: 'onetimeCode').				

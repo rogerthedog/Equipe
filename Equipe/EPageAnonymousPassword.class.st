@@ -33,10 +33,10 @@ EPageAnonymousPassword >> onetime: anObject [
 	onetime := anObject.
 	
 	"Look for the matching onetime"
-	codes := EDbOnetime selectByAction: (anObject action) keyId: (anObject keyId) onetimeCode: (anObject onetimeCode).
+	codes := EDbTOnetime selectByAction: (anObject action) keyId: (anObject keyId) onetimeCode: (anObject onetimeCode).
 	
 	codes size == 1 ifTrue: [  
-		person := EDbPerson selectById: (codes at: 1) keyId.
+		person := EDbTPerson selectById: (codes at: 1) keyId.
 		(codes at: 1) delete
 	
 	]

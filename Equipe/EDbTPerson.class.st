@@ -1,5 +1,5 @@
 Class {
-	#name : #EDbPerson,
+	#name : #EDbTPerson,
 	#superclass : #BTable,
 	#instVars : [
 		'firstName',
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-EDbPerson class >> metaDataSetColumnAliases [
+EDbTPerson class >> metaDataSetColumnAliases [
 	
 	self addMetaDataColumnAlias: 'first_name' forMember: 'firstName'.	
 	self addMetaDataColumnAlias: 'last_name' forMember: 'lastName'.	
@@ -22,7 +22,7 @@ EDbPerson class >> metaDataSetColumnAliases [
 ]
 
 { #category : #'as yet unclassified' }
-EDbPerson class >> selectByEmailAddress: emailAddress [
+EDbTPerson class >> selectByEmailAddress: emailAddress [
 
 	^ self selectWhere: 'emailAddress = ?' 
 		whereBindingBlock:
@@ -33,7 +33,7 @@ EDbPerson class >> selectByEmailAddress: emailAddress [
 ]
 
 { #category : #'as yet unclassified' }
-EDbPerson class >> selectByEmailAddress: emailAddress password: password [
+EDbTPerson class >> selectByEmailAddress: emailAddress password: password [
 
 	^ self selectWhere: 'emailAddress = ? AND password = ?' 
 		whereBindingBlock:
@@ -45,75 +45,75 @@ EDbPerson class >> selectByEmailAddress: emailAddress password: password [
 ]
 
 { #category : #'as yet unclassified' }
-EDbPerson class >> table [ 
+EDbTPerson class >> table [ 
 	^ 'person'
 ]
 
 { #category : #accessing }
-EDbPerson >> coachInd [
+EDbTPerson >> coachInd [
 	^ coachInd
 ]
 
 { #category : #accessing }
-EDbPerson >> coachInd: anObject [
+EDbTPerson >> coachInd: anObject [
 	coachInd := anObject
 ]
 
 { #category : #accessing }
-EDbPerson >> emailAddress [
+EDbTPerson >> emailAddress [
 	^ emailAddress
 ]
 
 { #category : #accessing }
-EDbPerson >> emailAddress: anObject [
+EDbTPerson >> emailAddress: anObject [
 	emailAddress := anObject
 ]
 
 { #category : #accessing }
-EDbPerson >> firstName [
+EDbTPerson >> firstName [
 	^ firstName
 ]
 
 { #category : #accessing }
-EDbPerson >> firstName: anObject [
+EDbTPerson >> firstName: anObject [
 	firstName := anObject
 ]
 
 { #category : #accessing }
-EDbPerson >> isCoach [
+EDbTPerson >> isCoach [
 
 	^ coachInd = 'Y'
 ]
 
 { #category : #accessing }
-EDbPerson >> lastName [
+EDbTPerson >> lastName [
 	^ lastName
 ]
 
 { #category : #accessing }
-EDbPerson >> lastName: anObject [
+EDbTPerson >> lastName: anObject [
 	lastName := anObject
 ]
 
 { #category : #accessing }
-EDbPerson >> password [
+EDbTPerson >> password [
 	^ password
 ]
 
 { #category : #accessing }
-EDbPerson >> password: anObject [
+EDbTPerson >> password: anObject [
 
 	password := BEncryption encrypt: anObject 
 ]
 
 { #category : #accessing }
-EDbPerson >> startCoaching [
+EDbTPerson >> startCoaching [
 
 	coachInd := 'Y'
 ]
 
 { #category : #accessing }
-EDbPerson >> stopCoaching [
+EDbTPerson >> stopCoaching [
 
 	coachInd := 'N'
 ]

@@ -49,10 +49,10 @@ EPageAccount >> renderPageContentOn: html [
 		html horizontalRule. 
 		person isCoach ifTrue: [  
 			html label for: 'co'; with: 'If you no longer want to work with athletes '.
-			html submitButton id: 'co'; callback: [ self stopCoaching: person ]; value: 'Stop Coaching'.
+			html submitButton id: 'co'; callback: [ self stopCoaching: person ]; value: 'Stop Coaching'
 		] ifFalse: [  
 			html label for: 'co'; with: 'If you want to work with athletes '.
-			html submitButton id: 'co'; callback: [ self startCoaching: person ]; value: 'Start Coaching'.
+			html submitButton id: 'co'; callback: [ self startCoaching: person ]; value: 'Start Coaching'
 		]
 
 	]

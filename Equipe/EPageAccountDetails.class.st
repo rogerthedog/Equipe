@@ -15,7 +15,7 @@ EPageAccountDetails >> duplicateEmailValidation [
 
 	| people |
 
-	people := EDbPerson selectByEmailAddress: emailAddress.
+	people := EDbTPerson selectByEmailAddress: emailAddress.
 			
 	people isEmpty ifFalse: [  
 		self statusMessage: 'There is already a registered user for the specified email address' forKey: #emailAddress 
